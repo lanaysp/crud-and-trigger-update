@@ -1,5 +1,4 @@
 <div class="container">
-    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
 
 
         <div class="col-md-12 table-responsive mt-5">
@@ -12,21 +11,16 @@
                     <th>Tanggal Di Ubah</th>
                 </thead>
                 <tbody>
-                <?php if (empty($log)) : ?>
-                    <td colspan="7" class="text-center">
-                    Log Perubahan No Hp Kosong
-                    </td>
-                <?php endif; ?>
 
                 <?php
                 $i = 1;
-                 foreach ($log as $l) : ?>
+                foreach ($isi as $k0 => $v0): ?>
                     <tr>
-                        <th><?= $i++ ?></th>
-                        <td><?= $l['nim']; ?></td>
-                        <td><?= $l['no_hp_lama']; ?></td>
-                        <td><?= $l['no_hp_baru']; ?></td>
-                        <td><?= $l['tgl_diubah']; ?></td>
+                        <td><?php echo $v0['id'] ?></td>
+                        <td><?php echo $v0['nim'] ?></td>
+                        <td><?php echo $v0['no_hp_lama'] ?></td>
+                        <td><?php echo $v0['no_hp_baru'] ?></td>
+                        <td><?php echo $v0['tgl_diubah'] ?></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

@@ -33,4 +33,22 @@ class Mahasiswa_model extends CI_model {
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('mahasiswa', $data);
     }
+
+
+     public function retrieve2()
+    {
+        $this->db->select('id,nim,no_hp_lama,no_hp_baru,tgl_diubah');
+        $this->db->from("log");
+        $q = $this->db->get();
+        if ($q->num_rows()>0) {
+            $hasil = $q->result_array();
+        }else{
+            $hasil = array();
+        }
+        $q->free_result();
+
+        return $hasil;
+
+
+    }
 }

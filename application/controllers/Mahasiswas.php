@@ -38,6 +38,7 @@ class Mahasiswas extends CI_Controller {
             
             $this->session->set_flashdata('flash', 'Ditambahkan');
             $this->db->insert('mahasiswa', $data);
+            
             redirect('mahasiswas');
         }
     }
@@ -57,11 +58,29 @@ class Mahasiswas extends CI_Controller {
         redirect('mahasiswas');
     }
 
-    public function hapus($id)
+    public function hapus()
     {
-        $this->Mahasiswa_model->hapusDataMahasiswa($id);
-        $this->session->set_flashdata('flash', 'Dihapus');
-        redirect('mahasiswas');
+       $id = $this->uri->segment(3);
+        $q = $this->db->where('id', $id)->delete('mahasiswa');
+        if ($q) {
+            $this->session->set_flashdata('flash', 'Done Delete');
+            redirect('mahasiswas');
+        }
+    }
+
+    
+
+    public function logs()
+    {
+        $this->load->model('Mahasiswa_model', 'mhs');
+        $data = [
+            'isi' => $this->mhs->retrieve2()
+                ];
+        $data['judul'] = "Log History No Hp";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('mahasiswa/logs', $data);
+        $this->load->view('templates/footer');
     }
 
 }

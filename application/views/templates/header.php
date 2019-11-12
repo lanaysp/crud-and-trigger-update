@@ -32,7 +32,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="<?= base_url(); ?>mahasiswas">Mahasiswa</a>
-          <a class="nav-item nav-link" href="<?= base_url(); ?>log">Log</a>
+          <a class="nav-item nav-link" href="<?= base_url(); ?>mahasiswas/logs">Log</a>
         </div>
       </div>
     </div>
